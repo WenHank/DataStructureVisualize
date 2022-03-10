@@ -1,0 +1,83 @@
+.bst{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hintContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    left: 20%;
+    top: 150px;
+    cursor: pointer;
+}
+.loader{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(to top,#0000,rgba(71, 212, 212));
+    border-radius: 50%;
+    animation: rotate 1s linear infinite;
+    z-index: -1;
+}
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+.loader ::before{
+    content: '';
+    position: absolute;
+    background:#0000 ;
+    inset: 20px 20px 0 0;
+    border-radius: 50%;
+}
+#react-tree-vis li div{
+    box-shadow: none;
+}
+.record{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    position: fixed;
+    left: 100%;
+    top: 30%;
+    transition: .5s;
+}
+.record .title{
+    color: aqua;
+}
+.record .body{
+    color: aliceblue;
+    width: 200px;
+    height: 500px;
+    background: #6c757d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(236, 231, 231),0 0 20px rgba(236, 231, 231);
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+.open{
+    left: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.recordContainer button{
+    position: fixed;
+    width: 80px;
+    height: 60px;
+    left: 93%;
+    top: 20%;
+}
