@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import Bubble from "./Sort/Bubble";
 import BST from "./Tree/BST";
 import Tree from "./Tree/Tree";
+import BSTInteractive from "./Tree/BSTInteractive";
 
 function Container() {
   return (
@@ -19,6 +20,7 @@ function Container() {
           <Route exact path="bst" element={<BST />} />
           <Route exact path="avl" element={<AVL />} />
           <Route exact path="rbt" element={<RBT />} />
+          <Route exact path="bstinteractive" element={<BSTInteractive />} />
           <Route exact path="maxheap" element={<MaxH />} />
           <Route exact path="minheap" element={<MinH />} />
           <Route exact path="bubble" element={<Bubble />} />

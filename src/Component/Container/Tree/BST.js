@@ -18,11 +18,11 @@ for (let i = 0; i < getRandom(5, 10); i++) {
   }
   arr.push(tmp);
 }
-function getli(params) {
-  let fuck = document.querySelectorAll("li.null");
-  console.log(fuck[0]);
-  return document.querySelectorAll("li");
-}
+// function getli(params) {
+//   let fuck = document.querySelectorAll("li.null");
+//   console.log(fuck[0]);
+//   return document.querySelectorAll("li");
+// }
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
@@ -63,6 +63,129 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
+function InorderIntroduction(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Inorder</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h3>What is Inorder ?</h3>
+        <p>
+          簡單來說，中序地走訪規則為LDR，
+          <br />
+          L代表走訪左子樹
+          <br />
+          D代表印出該Node的數值
+          <br />
+          R代表走訪右子數
+          <br />
+          以下圖為例
+          <br />
+          <div className="traversalbox">
+            <img src="./Img/traversal.png" />
+            <div>
+              <h4 style={{ color: "#4874b1" }}>走訪順序為：</h4>
+              L(有左子樹)
+              <br />
+              L(有左子樹)
+              <br />
+              L(有左子樹)
+              <br />
+              D(印出2)
+            </div>
+          </div>
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+function PreorderIntroduction(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Preorder</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h3>What is Binary Search Tree ?</h3>
+        <p>
+          簡單來說就是，任一個節點的
+          <span style={{ color: "#4874b1" }}>左子樹都比父節點小</span> ，
+          <span style={{ color: "#4874b1" }}>右子樹都比父節點大</span>
+          ，
+          <br />
+          且每一個節點的值都不重複。所以當我們要查找資料的時候，就可以從根節點開始，
+          <br />
+          比根節點<span style={{ color: "#4874b1" }}>小的就從左子樹</span>
+          開始找，比較<span style={{ color: "#4874b1" }}>大的就從右子樹</span>
+          開始找。
+          <br />
+          相對於其他資料結構而言，尋找、插入的時間複雜度較低，為Ｏ(logN)。
+        </p>
+        <h3>How can we use Binary Search Tree ?</h3>
+        <p>我們可以把資料建立成Binary Search Tree，以降低我們搜尋的時間</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+function PostorderIntroduction(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">Postorder</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h3>What is Binary Search Tree ?</h3>
+        <p>
+          簡單來說就是，任一個節點的
+          <span style={{ color: "#4874b1" }}>左子樹都比父節點小</span> ，
+          <span style={{ color: "#4874b1" }}>右子樹都比父節點大</span>
+          ，
+          <br />
+          且每一個節點的值都不重複。所以當我們要查找資料的時候，就可以從根節點開始，
+          <br />
+          比根節點<span style={{ color: "#4874b1" }}>小的就從左子樹</span>
+          開始找，比較<span style={{ color: "#4874b1" }}>大的就從右子樹</span>
+          開始找。
+          <br />
+          相對於其他資料結構而言，尋找、插入的時間複雜度較低，為Ｏ(logN)。
+        </p>
+        <h3>How can we use Binary Search Tree ?</h3>
+        <p>我們可以把資料建立成Binary Search Tree，以降低我們搜尋的時間</p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 function Traversal(orderValue) {
   let print = orderValue[0];
   for (let i = 1; i < orderValue.length; i++) {
@@ -81,6 +204,9 @@ function BST() {
   const [PreorderValue, setPreorderValue] = useState("");
   const [PostorderValue, setPostorderValue] = useState("");
   const [modalShow, setModalShow] = React.useState(false);
+  const [inordermodalShow, setinorderModalShow] = React.useState(false);
+  const [preordermodalShow, setpreorderModalShow] = React.useState(false);
+  const [postordermodalShow, setpostorderModalShow] = React.useState(false);
   const [record, setRecord] = useState([]);
   const scrollContainerStyle = { width: "100%", maxHeight: "500px" };
   const [open, setOpen] = useState("hide");
@@ -94,6 +220,27 @@ function BST() {
           className="hint"
           src="./Img/hint.gif"
           onClick={() => setModalShow(true)}
+        />
+      </div>
+      <div className="hintContainer Inorder">
+        <img
+          className="hint"
+          src="./Img/hint.gif"
+          onClick={() => setinorderModalShow(true)}
+        />
+      </div>
+      <div className="hintContainer Preorder">
+        <img
+          className="hint"
+          src="./Img/hint.gif"
+          onClick={() => setpreorderModalShow(true)}
+        />
+      </div>
+      <div className="hintContainer Postorder">
+        <img
+          className="hint"
+          src="./Img/hint.gif"
+          onClick={() => setpostorderModalShow(true)}
         />
       </div>
       <h1>Binary Search Tree</h1>
@@ -270,6 +417,18 @@ function BST() {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+      />
+      <InorderIntroduction
+        show={inordermodalShow}
+        onHide={() => setinorderModalShow(false)}
+      />
+      <PreorderIntroduction
+        show={preordermodalShow}
+        onHide={() => setpreorderModalShow(false)}
+      />
+      <PostorderIntroduction
+        show={postordermodalShow}
+        onHide={() => setpostorderModalShow(false)}
       />
       <BinarySearchTree data={arr} ref={ref} />
     </div>

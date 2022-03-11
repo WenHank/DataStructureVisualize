@@ -26,6 +26,22 @@
     animation: rotate 1s linear infinite;
     z-index: -1;
 }
+.Inorder{
+    left: 28%;
+    top: 360px;
+}
+.Preorder{
+    left: 28%;
+    top: 408px;
+}
+.Postorder{
+    left: 28%;
+    top: 456px;
+}
+.traversalbox{
+    display: flex;
+    flex-direction: row;
+}
 @keyframes rotate{
     to{
         transform:rotate(360deg);

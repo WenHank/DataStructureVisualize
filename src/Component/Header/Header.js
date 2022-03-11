@@ -25,12 +25,13 @@ function Header() {
                 Tree Intruduction
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">
-                Binary Tree
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">Complete</NavDropdown.Item>
               <NavDropdown.Item href="/bst">
                 Binary Search Tree
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/avl">AVL</NavDropdown.Item>
+              <NavDropdown.Item href="/rbt">Red Black Tree</NavDropdown.Item>
+              <NavDropdown.Item href="/bstinteractive">
+                BST interactive
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
