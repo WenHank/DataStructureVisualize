@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AVL from "./AdvancedTree/AVL";
+import AVL from "./Tree/AVL";
 import MaxH from "./AdvancedTree/MaxH";
 import MinH from "./AdvancedTree/MinH";
-import RBT from "./AdvancedTree/RBT";
+import RBT from "./Tree/RBT";
 import Home from "./Home/Home";
 import Bubble from "./Sort/Bubble";
 import BST from "./Tree/BST";

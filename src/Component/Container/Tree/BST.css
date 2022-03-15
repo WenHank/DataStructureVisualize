@@ -29,18 +29,31 @@
 .Inorder{
     left: 28%;
     top: 360px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 .Preorder{
     left: 28%;
     top: 408px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 .Postorder{
     left: 28%;
     top: 456px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 .traversalbox{
     display: flex;
     flex-direction: row;
+}
+.traversal{
+    display: flex;
+    flex-direction: row;
+}
+.traversal div{
+    margin-left: 35px;
 }
 @keyframes rotate{
     to{
