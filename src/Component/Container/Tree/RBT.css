@@ -4,3 +4,12 @@
     align-items: center;
     flex-direction: column;
 }
+.rbimg{
+    width: 300px;
+    margin-right: 20px;
+    border: 5px solid rgba(0, 0, 0);
+}
+.showrbimg{
+    width: auto;
+    height: 300px;
+}

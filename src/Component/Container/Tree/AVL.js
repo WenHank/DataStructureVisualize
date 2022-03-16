@@ -195,6 +195,10 @@ function MyVerticallyCenteredModal(props) {
         </p>
         <h3>About function</h3>
         <p>
+          你可能會很好奇每個節點下面的小字是什麼？
+          <br />
+          <span style={{ color: "#4874b1" }}>他代表的是該節點的樹高</span>
+          <br />
           Random: 可隨機新增一顆樹
           <br />
           Clear: 刪除整棵樹
