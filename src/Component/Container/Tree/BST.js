@@ -334,7 +334,15 @@ function BST() {
             variant="secondary"
             onClick={() => {
               generateRandomTree(getRandom(5, 10));
-              setRecord((prevArray) => [...record, "Random \n"]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                "Random \n",
+              ]);
             }}
           >
             Random
@@ -343,7 +351,15 @@ function BST() {
             variant="secondary"
             onClick={() => {
               clear();
-              setRecord((prevArray) => [...record, "Clear \n"]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                "Clear \n",
+              ]);
             }}
           >
             Clear
@@ -362,6 +378,11 @@ function BST() {
               search(bstsearchValue);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Search  ${bstsearchValue} \n`,
               ]);
             }}
@@ -381,6 +402,11 @@ function BST() {
               search(bstinsertValue);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Insert  ${bstinsertValue} \n`,
               ]);
             }}
@@ -402,6 +428,11 @@ function BST() {
               }, 1200);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Remove  ${bstremoveValue} \n`,
               ]);
             }}
@@ -422,7 +453,15 @@ function BST() {
             onClick={() => {
               let orderValue = getData("inorder");
               setInorderValue(getData("inorder"));
-              setRecord((prevArray) => [...record, `Inorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Inorder  \n`,
+              ]);
               let i = 0;
               let Inordertraversal = setInterval(() => {
                 if (i > orderValue.length) {
@@ -450,7 +489,15 @@ function BST() {
             onClick={() => {
               let orderValue = getData("preorder");
               setPreorderValue(getData("preorder"));
-              setRecord((prevArray) => [...record, `Preorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Preorder  \n`,
+              ]);
               let i = 0;
               let Preordertraversal = setInterval(() => {
                 if (i > orderValue.length) {
@@ -478,7 +525,15 @@ function BST() {
             onClick={() => {
               let orderValue = getData("postorder");
               setPostorderValue(getData("postorder"));
-              setRecord((prevArray) => [...record, `Postorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Postorder  \n`,
+              ]);
               let i = 0;
               let Postordertraversal = setInterval(() => {
                 if (i > orderValue.length) {

@@ -477,7 +477,15 @@ function AVL() {
             variant="secondary"
             onClick={() => {
               generateRandomTree(getRandom(5, 10));
-              setRecord((prevArray) => [...record, "Random \n"]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                "Random \n",
+              ]);
             }}
           >
             Random
@@ -486,7 +494,15 @@ function AVL() {
             variant="secondary"
             onClick={() => {
               clear();
-              setRecord((prevArray) => [...record, "Clear \n"]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                "Clear \n",
+              ]);
             }}
           >
             Clear
@@ -505,6 +521,11 @@ function AVL() {
               search(avlsearchValue);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Search  ${avlsearchValue} \n`,
               ]);
             }}
@@ -524,6 +545,11 @@ function AVL() {
               search(avlinsertValue);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Insert  ${avlinsertValue} \n`,
               ]);
             }}
@@ -545,6 +571,11 @@ function AVL() {
               }, 1200);
               setRecord((prevArray) => [
                 ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
                 `Remove  ${avlremoveValue} \n`,
               ]);
             }}
@@ -565,7 +596,15 @@ function AVL() {
             onClick={() => {
               let orderValue = getData("inorder");
               setInorderValue(getData("inorder"));
-              setRecord((prevArray) => [...record, `Inorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Inorder  \n`,
+              ]);
               let i = 0;
               let Inordertraversal = setInterval(() => {
                 if (i > orderValue.length) {
@@ -593,7 +632,15 @@ function AVL() {
             onClick={() => {
               let orderValue = getData("preorder");
               setPreorderValue(getData("preorder"));
-              setRecord((prevArray) => [...record, `Preorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Preorder  \n`,
+              ]);
               let i = 0;
               let Preordertraversal = setInterval(() => {
                 if (i > orderValue.length) {
@@ -621,7 +668,15 @@ function AVL() {
             onClick={() => {
               let orderValue = getData("postorder");
               setPostorderValue(getData("postorder"));
-              setRecord((prevArray) => [...record, `Postorder  \n`]);
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                `Postorder  \n`,
+              ]);
               let i = 0;
               let Postordertraversal = setInterval(() => {
                 if (i > orderValue.length) {

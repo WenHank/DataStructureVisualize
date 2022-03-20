@@ -4,6 +4,7 @@ import { BinarySearchTree, useBinarySearchTree } from "react-tree-vis";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "./BSTInteractive.css";
+import { MDBContainer } from "mdbreact";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -335,6 +336,11 @@ function MyVerticallyCenteredModal(props) {
 function BSTInteractive() {
   const { ref, getData, generateRandomTree } = useBinarySearchTree();
   const [modalShow, setModalShow] = React.useState(false);
+  const [record, setRecord] = useState([]);
+  const scrollContainerStyle = { width: "100%", maxHeight: "500px" };
+  const [open, setOpen] = useState("hide");
+
+  let tmp = [...record];
   function creatTree(params) {
     let tmp = [];
     async function newTree(params) {
@@ -359,77 +365,132 @@ function BSTInteractive() {
         />
       </div>
       <h1>Interactive</h1>
-      <BinarySearchTree data={arr} ref={ref} />
-      <Button
-        variant="secondary"
-        style={{ marginTop: "20px" }}
-        onClick={() => {
-          creatTree();
-        }}
-      >
-        Random
-      </Button>
-      <div className="dropdrupcontainer">
-        <InReactBeautifulDndHorizontal arr={arr} />
-        <PreReactBeautifulDndHorizontal arr={arr} />
-        <PostReactBeautifulDndHorizontal arr={arr} />
+      <div className="treeanddnd">
+        <div className="bsttreecontainer">
+          <BinarySearchTree data={arr} ref={ref} />
+          <Button
+            variant="secondary"
+            style={{ marginTop: "20px" }}
+            onClick={() => {
+              creatTree();
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                "Random \n",
+              ]);
+            }}
+          >
+            Random
+          </Button>
+        </div>
+        <div className="dropdrupcontainer">
+          <InReactBeautifulDndHorizontal arr={arr} />
+          <PreReactBeautifulDndHorizontal arr={arr} />
+          <PostReactBeautifulDndHorizontal arr={arr} />
+          <Button
+            variant="secondary"
+            style={{ marginTop: "20px" }}
+            onClick={() => {
+              let inorderValue = getData("inorder");
+              let preorderValue = getData("preorder");
+              let postorderValue = getData("postorder");
+              let inorder = document.querySelectorAll(".Inorderitems");
+              let preorder = document.querySelectorAll(".Preorderitems");
+              let postorder = document.querySelectorAll(".Postorderitems");
+              let inTF = 1;
+              let preTF = 1;
+              let postTF = 1;
+              let correctS = document.querySelectorAll(".correct");
+              let wrongS = document.querySelectorAll(".wrong");
+              let tmp = "";
+              for (let i = 0; i < inorder.length; i++) {
+                if (
+                  inorder[i].innerText !== inorderValue[i].toString() &&
+                  inTF === 1
+                ) {
+                  correctS[0].style.display = "none";
+                  wrongS[0].style.display = "block";
+                  inTF = 0;
+                  tmp += "inorder wrong \n";
+                }
+                if (
+                  preorder[i].innerText !== preorderValue[i].toString() &&
+                  preTF === 1
+                ) {
+                  correctS[1].style.display = "none";
+                  wrongS[1].style.display = "block";
+                  preTF = 0;
+                  tmp += "preorder wrong \n";
+                }
+                if (
+                  postorder[i].innerText !== postorderValue[i].toString() &&
+                  postTF === 1
+                ) {
+                  correctS[2].style.display = "none";
+                  wrongS[2].style.display = "block";
+                  postTF = 0;
+                  tmp += "postorder wrong \n";
+                }
+              }
+              if (inTF) {
+                correctS[0].style.display = "block";
+                wrongS[0].style.display = "none";
+                tmp += "inorder correct \n";
+              }
+              if (preTF) {
+                correctS[1].style.display = "block";
+                wrongS[1].style.display = "none";
+                tmp += "preorder correct \n";
+              }
+              if (postTF) {
+                correctS[2].style.display = "block";
+                wrongS[2].style.display = "none";
+                tmp += "postorder correct \n";
+              }
+              setRecord((prevArray) => [
+                ...record,
+                "-------------------",
+                new Date().toLocaleTimeString() + "\n",
+                new Date().getDate() + "日\n",
+                new Date().getMonth() + 1 + "月 ",
+                new Date().getFullYear() + " ",
+                tmp,
+              ]);
+            }}
+          >
+            Submit
+          </Button>
+        </div>
       </div>
-      <Button
-        variant="secondary"
-        onClick={() => {
-          let inorderValue = getData("inorder");
-          let preorderValue = getData("preorder");
-          let postorderValue = getData("postorder");
-          let inorder = document.querySelectorAll(".Inorderitems");
-          let preorder = document.querySelectorAll(".Preorderitems");
-          let postorder = document.querySelectorAll(".Postorderitems");
-          let inTF = 1;
-          let preTF = 1;
-          let postTF = 1;
-          let correctS = document.querySelectorAll(".correct");
-          let wrongS = document.querySelectorAll(".wrong");
-          for (let i = 0; i < inorder.length; i++) {
-            if (
-              inorder[i].innerText !== inorderValue[i].toString() &&
-              inTF === 1
-            ) {
-              correctS[0].style.display = "none";
-              wrongS[0].style.display = "block";
-              inTF = 0;
-            }
-            if (
-              preorder[i].innerText !== preorderValue[i].toString() &&
-              preTF === 1
-            ) {
-              correctS[1].style.display = "none";
-              wrongS[1].style.display = "block";
-              preTF = 0;
-            }
-            if (
-              postorder[i].innerText !== postorderValue[i].toString() &&
-              postTF === 1
-            ) {
-              correctS[2].style.display = "none";
-              wrongS[2].style.display = "block";
-              postTF = 0;
-            }
-          }
-          if (inTF) {
-            correctS[0].style.display = "block";
-            wrongS[0].style.display = "none";
-          }
-          if (preTF) {
-            correctS[1].style.display = "block";
-            wrongS[1].style.display = "none";
-          }
-          if (postTF) {
-            correctS[2].style.display = "block";
-            wrongS[2].style.display = "none";
-          }
-        }}
-      >
-        Submit
-      </Button>
+      <div className={`record ${open === "show" && "open"} `}>
+        <div className="recordContainer">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              if (open === "hide") {
+                setOpen("show");
+              } else {
+                setOpen("hide");
+              }
+            }}
+          >
+            {open}
+          </Button>
+          <MDBContainer>
+            <div
+              className="scrollbar body mx-auto"
+              style={(scrollContainerStyle, { whiteSpace: "pre-wrap" })}
+            >
+              <div className="title">Record Table</div>
+              {tmp.reverse()}
+            </div>
+          </MDBContainer>
+        </div>
+      </div>
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}

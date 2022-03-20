@@ -4,8 +4,8 @@ function Home() {
   return (
     <div className="home">
       <h2>
-        <span>Data&nbsp;</span>
-        <span>Structure&nbsp;</span>
+        <span>Data</span>
+        <span>Structure</span>
         <span>Visualization</span>
       </h2>
     </div>
