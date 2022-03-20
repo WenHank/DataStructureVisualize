@@ -11,16 +11,24 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Basic" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Array</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Link List</NavDropdown.Item>
+            <NavDropdown title="Traditional" id="Traditional-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">
+                Tree Intruduction
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">Stack</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Queue</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Binary Search Tree
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">
+                Adelson Velsky Landis Tree
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">
+                Red Black Tree
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Tree" id="basic-nav-dropdown">
+            <NavDropdown title="Interactive" id="Interactive-nav-dropdown">
               <NavDropdown.Item href="/tree">
                 Tree Intruduction
               </NavDropdown.Item>
@@ -32,42 +40,19 @@ function Header() {
                 Adelson Velsky Landis Tree
               </NavDropdown.Item>
               <NavDropdown.Item href="/rbt">Red Black Tree</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Game" id="Game-nav-dropdown">
+              <NavDropdown.Item href="/tree">
+                Tree Intruduction
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item href="/bstinteractive">
                 BST interactive
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Advanced Tree" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/avl">
-                Adelson Velsky Landis Tree
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/rbt">Red Black Tree</NavDropdown.Item>
-              <NavDropdown.Item href="/maxheap">Max Heap</NavDropdown.Item>
-              <NavDropdown.Item href="/minheap">Min Heap</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Search" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Linear</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Binary Search
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Sort" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Insert</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Select</NavDropdown.Item>
-              <NavDropdown.Item href="/bubble">Bubble</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Quick</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Graph" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">DFS</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">BFS</NavDropdown.Item>
+              <NavDropdown.Item href="/avl">AVL interactive</NavDropdown.Item>
+              <NavDropdown.Item href="/rbt">RBT interactive</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Test</NavDropdown.Item>
             </NavDropdown>

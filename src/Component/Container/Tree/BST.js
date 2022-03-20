@@ -60,7 +60,7 @@ function MyVerticallyCenteredModal(props) {
           <br />
           Clear: 刪除整棵樹
           <br />
-          Hide: 叫出記錄表(記錄你動作)
+          Hide: 叫出記錄表()
           <br />
         </p>
       </Modal.Body>

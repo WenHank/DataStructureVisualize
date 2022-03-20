@@ -18,6 +18,7 @@ for (let i = 0; i < getRandom(5, 10); i++) {
   }
   arr.push(tmp);
 }
+
 const getItems = (count) =>
   Array.from({ length: count }, (arr, k) => k).map((k) => ({
     id: `item-${k + 1}`,
@@ -52,13 +53,13 @@ const getListStyle = () => ({
   overflow: "auto",
 });
 
-class InorderDnd extends React.Component {
+class InReactBeautifulDndHorizontal extends React.Component {
   constructor(props) {
     super(props);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
       items: getItems(arr.length),
     };
-    this.onDragEnd = this.onDragEnd.bind(this);
   }
   onDragEnd(result) {
     if (!result.destination) {
@@ -77,47 +78,67 @@ class InorderDnd extends React.Component {
   }
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable" direction="horizontal">
-          {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {this.state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                      className="Inorderitems"
+      <div>
+        <h3>Inorder</h3>
+        <Button
+          variant="secondary"
+          style={{ marginBottom: "10px" }}
+          onClick={() => {
+            this.setState({ items: getItems(arr.length) });
+          }}
+        >
+          Change
+        </Button>
+        <div className="Dndcontainer">
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="droppable" direction="horizontal">
+              {(provided, snapshot) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {this.state.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
                     >
-                      {item.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                          className="Inorderitems"
+                        >
+                          {item.content}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <img className="correct" src="./Img/correct.png" />
+          <img className="wrong" src="./Img/wrong.png" />
+        </div>
+      </div>
     );
   }
 }
-class PreorderDnd extends React.Component {
+class PreReactBeautifulDndHorizontal extends React.Component {
   constructor(props) {
     super(props);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
       items: getItems(arr.length),
     };
-    this.onDragEnd = this.onDragEnd.bind(this);
   }
   onDragEnd(result) {
     if (!result.destination) {
@@ -136,47 +157,67 @@ class PreorderDnd extends React.Component {
   }
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable" direction="horizontal">
-          {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {this.state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                      className="Preorderitems"
+      <div>
+        <h3>Preorder</h3>
+        <Button
+          variant="secondary"
+          style={{ marginBottom: "10px" }}
+          onClick={() => {
+            this.setState({ items: getItems(arr.length) });
+          }}
+        >
+          Change
+        </Button>
+        <div className="Dndcontainer">
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="droppable" direction="horizontal">
+              {(provided, snapshot) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {this.state.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
                     >
-                      {item.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                          className="Preorderitems"
+                        >
+                          {item.content}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <img className="correct" src="./Img/correct.png" />
+          <img className="wrong" src="./Img/wrong.png" />
+        </div>
+      </div>
     );
   }
 }
-class PostorderDnd extends React.Component {
+class PostReactBeautifulDndHorizontal extends React.Component {
   constructor(props) {
     super(props);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
       items: getItems(arr.length),
     };
-    this.onDragEnd = this.onDragEnd.bind(this);
   }
   onDragEnd(result) {
     if (!result.destination) {
@@ -195,65 +236,143 @@ class PostorderDnd extends React.Component {
   }
   render() {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <Droppable droppableId="droppable" direction="horizontal">
-          {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {this.state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                      className="Postorderitems"
+      <div>
+        <h3>Postorder</h3>
+        <Button
+          variant="secondary"
+          style={{ marginBottom: "10px" }}
+          onClick={() => {
+            this.setState({ items: getItems(arr.length) });
+          }}
+        >
+          Change
+        </Button>
+        <div className="Dndcontainer">
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <Droppable droppableId="droppable" direction="horizontal">
+              {(provided, snapshot) => (
+                <div
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={getListStyle(snapshot.isDraggingOver)}
+                >
+                  {this.state.items.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id}
+                      index={index}
                     >
-                      {item.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          style={getItemStyle(
+                            snapshot.isDragging,
+                            provided.draggableProps.style
+                          )}
+                          className="Postorderitems"
+                        >
+                          {item.content}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <img className="correct" src="./Img/correct.png" />
+          <img className="wrong" src="./Img/wrong.png" />
+        </div>
+      </div>
     );
   }
+}
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Binary Search Tree Interactive
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h3>What can you do ?</h3>
+        <p>
+          透過拖拉下方的方塊，將其排列成中序,前序,後序的
+          <br />
+          並且按下Submit來知道你的答案是否正確
+          <br />
+          假如你還想做更多測驗的話
+          <br />
+          你可以按下Random之後，會有更多的題目讓你練習
+        </p>
+        <h3>About function</h3>
+        <p>
+          Random: 可隨機生成一棵樹
+          <br />
+          Change: 更改拖曳欄位
+          <br />
+          Submit: 送出答案
+          <br />
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={props.onHide}>
+          Try it!
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
 }
 function BSTInteractive() {
-  const { ref, getData } = useBinarySearchTree();
+  const { ref, getData, generateRandomTree } = useBinarySearchTree();
+  const [modalShow, setModalShow] = React.useState(false);
+  function creatTree(params) {
+    let tmp = [];
+    async function newTree(params) {
+      await generateRandomTree(getRandom(5, 10));
+      tmp = getData("inorder");
+      tmp.sort(function () {
+        return 0.5 - Math.random();
+      });
+      arr = tmp;
+      console.log(arr);
+    }
+    newTree();
+  }
   return (
     <div className="BSTInteractive">
+      <div className="hintContainer">
+        <div className="loader"></div>
+        <img
+          className="hint"
+          src="./Img/hint.gif"
+          onClick={() => setModalShow(true)}
+        />
+      </div>
       <h1>Interactive</h1>
       <BinarySearchTree data={arr} ref={ref} />
+      <Button
+        variant="secondary"
+        style={{ marginTop: "20px" }}
+        onClick={() => {
+          creatTree();
+        }}
+      >
+        Random
+      </Button>
       <div className="dropdrupcontainer">
-        <h3>Inorder</h3>
-        <div className="Dndcontainer">
-          <InorderDnd />
-          <img className="correct" src="./Img/correct.png" />
-          <img className="wrong" src="./Img/wrong.png" />
-        </div>
-        <h3>Preorder</h3>
-        <div className="Dndcontainer">
-          <PreorderDnd />
-          <img className="correct" src="./Img/correct.png" />
-          <img className="wrong" src="./Img/wrong.png" />
-        </div>
-        <h3>Postorder</h3>
-        <div className="Dndcontainer">
-          <PostorderDnd />
-          <img className="correct" src="./Img/correct.png" />
-          <img className="wrong" src="./Img/wrong.png" />
-        </div>
+        <InReactBeautifulDndHorizontal arr={arr} />
+        <PreReactBeautifulDndHorizontal arr={arr} />
+        <PostReactBeautifulDndHorizontal arr={arr} />
       </div>
       <Button
         variant="secondary"
@@ -311,6 +430,10 @@ function BSTInteractive() {
       >
         Submit
       </Button>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 }
