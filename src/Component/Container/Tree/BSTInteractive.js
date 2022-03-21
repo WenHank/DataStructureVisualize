@@ -10,7 +10,9 @@ function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 var arr = [];
-for (let i = 0; i < getRandom(5, 10); i++) {
+let tmpArr = [];
+let disabled = true;
+for (let i = 0; i < getRandom(5, 7); i++) {
   let tmp = getRandom(5, 70);
   for (let j = 0; j < arr.length; j++) {
     if (arr[j] === tmp) {
@@ -18,12 +20,13 @@ for (let i = 0; i < getRandom(5, 10); i++) {
     }
   }
   arr.push(tmp);
+  tmpArr = arr;
 }
 
 const getItems = (count) =>
-  Array.from({ length: count }, (arr, k) => k).map((k) => ({
+  Array.from({ length: count }, (tmpArr, k) => k).map((k) => ({
     id: `item-${k + 1}`,
-    content: `${arr[k]}`,
+    content: `${tmpArr[k]}`,
   }));
 // 重新記錄陣列順序
 const reorder = (list, startIndex, endIndex) => {
@@ -59,7 +62,7 @@ class InReactBeautifulDndHorizontal extends React.Component {
     super(props);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
-      items: getItems(arr.length),
+      items: getItems(this.props.arr.length),
     };
   }
   onDragEnd(result) {
@@ -84,8 +87,10 @@ class InReactBeautifulDndHorizontal extends React.Component {
         <Button
           variant="secondary"
           style={{ marginBottom: "10px" }}
+          disabled={disabled}
           onClick={() => {
-            this.setState({ items: getItems(arr.length) });
+            this.setState({ items: getItems(tmpArr.length) });
+            disabled = true;
           }}
         >
           Change
@@ -138,7 +143,7 @@ class PreReactBeautifulDndHorizontal extends React.Component {
     super(props);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
-      items: getItems(arr.length),
+      items: getItems(this.props.arr.length),
     };
   }
   onDragEnd(result) {
@@ -163,8 +168,10 @@ class PreReactBeautifulDndHorizontal extends React.Component {
         <Button
           variant="secondary"
           style={{ marginBottom: "10px" }}
+          disabled={disabled}
           onClick={() => {
-            this.setState({ items: getItems(arr.length) });
+            this.setState({ items: getItems(tmpArr.length) });
+            disabled = true;
           }}
         >
           Change
@@ -217,7 +224,7 @@ class PostReactBeautifulDndHorizontal extends React.Component {
     super(props);
     this.onDragEnd = this.onDragEnd.bind(this);
     this.state = {
-      items: getItems(arr.length),
+      items: getItems(this.props.arr.length),
     };
   }
   onDragEnd(result) {
@@ -242,8 +249,10 @@ class PostReactBeautifulDndHorizontal extends React.Component {
         <Button
           variant="secondary"
           style={{ marginBottom: "10px" }}
+          disabled={disabled}
           onClick={() => {
-            this.setState({ items: getItems(arr.length) });
+            this.setState({ items: getItems(tmpArr.length) });
+            disabled = true;
           }}
         >
           Change
@@ -341,19 +350,6 @@ function BSTInteractive() {
   const [open, setOpen] = useState("hide");
 
   let tmp = [...record];
-  function creatTree(params) {
-    let tmp = [];
-    async function newTree(params) {
-      await generateRandomTree(getRandom(5, 10));
-      tmp = getData("inorder");
-      tmp.sort(function () {
-        return 0.5 - Math.random();
-      });
-      arr = tmp;
-      console.log(arr);
-    }
-    newTree();
-  }
   return (
     <div className="BSTInteractive">
       <div className="hintContainer">
@@ -372,7 +368,24 @@ function BSTInteractive() {
             variant="secondary"
             style={{ marginTop: "20px" }}
             onClick={() => {
-              creatTree();
+              async function newTree(params) {
+                tmpArr = [];
+                await generateRandomTree(getRandom(5, 7));
+                tmpArr = getData("inorder");
+                tmpArr.sort(function () {
+                  return 0.5 - Math.random();
+                });
+              }
+              newTree();
+              let correctS = document.querySelectorAll(".correct");
+              let wrongS = document.querySelectorAll(".wrong");
+              disabled = false;
+              correctS[0].style.display = "none";
+              wrongS[0].style.display = "none";
+              correctS[1].style.display = "none";
+              wrongS[1].style.display = "none";
+              correctS[2].style.display = "none";
+              wrongS[2].style.display = "none";
               setRecord((prevArray) => [
                 ...record,
                 "-------------------",
@@ -388,9 +401,9 @@ function BSTInteractive() {
           </Button>
         </div>
         <div className="dropdrupcontainer">
-          <InReactBeautifulDndHorizontal arr={arr} />
-          <PreReactBeautifulDndHorizontal arr={arr} />
-          <PostReactBeautifulDndHorizontal arr={arr} />
+          <InReactBeautifulDndHorizontal arr={tmpArr} />
+          <PreReactBeautifulDndHorizontal arr={tmpArr} />
+          <PostReactBeautifulDndHorizontal arr={tmpArr} />
           <Button
             variant="secondary"
             style={{ marginTop: "20px" }}
